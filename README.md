@@ -1,6 +1,6 @@
 # FashionR2R
 
-FashionR2R: Texture-preserving Rendered-to-Real Image Translation with Diffusion Models [NeurIPS 2024] 
+[FashionR2R: Texture-preserving Rendered-to-Real Image Translation with Diffusion Models](https://arxiv.org/abs/2410.14429?context=cs) [NeurIPS 2024] 
 
 [Project Page](https://rickhh.github.io/FashionR2R/)
 

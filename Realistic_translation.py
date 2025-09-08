@@ -174,7 +174,7 @@ def main():
                 register_attention_control_new(pipe, controller)
 
                 pipe.enable_model_cpu_offload()
-                pipe.enable_xformers_memory_efficient_attention()
+                # pipe.enable_xformers_memory_efficient_attention()
 
                 generator = torch.Generator(device="cuda").manual_seed(1)
 
@@ -194,7 +194,7 @@ def main():
                 target_folder = os.path.join(args.output_dir, target_subdir)
                 os.makedirs(target_folder, exist_ok = True)
 
-                save_image(results[1], os.path.join(target_folder,str(H) + 'x' + str(W) + '_'+ str(name) + '_' + str(args.target_prompt)+str(args.replace_steps_ratio) + '_' + str(args.denoising_strength) + '_<' + str(args.attn_replace_layers) + '.jpg'))
+                save_image(results[1], os.path.join(target_folder, f"{H}x{W}_{name}_{args.target_prompt}_{args.replace_steps_ratio}_{args.denoising_strength}_attn{args.attn_replace_layers}.jpg"))
                 target_file_path = os.path.join(target_folder, name)
                 duration = time.time() - start_time
                 print(f'image Saved to: {target_file_path}, time is {duration}')

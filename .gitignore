@@ -2,3 +2,5 @@ synfashion_release/
 out/
 textual_inversion.py
 .vscode/
+__pycache__/
+src/

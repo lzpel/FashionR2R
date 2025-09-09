@@ -1,14 +1,18 @@
 export MSYS_NO_PATHCONV=1
+export CUDA_VISIBLE_DEVICES=0
 PATH_SUBSET=out/subset
+SHELL:=bash
 generate:
 	@: torchのダウンロードにめっちゃ時間がかかるがデッドロックはしておらず、待てば終わる
-	pipenv install
+	conda env create -f environment.yaml
+activate:
+	conda activate FashionR2R
+deactivate:
+	conda deactivate
 generate-subset:
 	python ./pick_flatten_subset_copy.py --src synfashion_release --dst $(PATH_SUBSET) --total 2000
 run:
-	pipenv run $(MAKE) run-inside
-run-inside:
-	CUDA_VISIBLE_DEVICES=0 python ./Realistic_translation.py \
+	python ./Realistic_translation.py \
 	--model_path=runwayml/stable-diffusion-v1-5 \
 	--source_image_path=synfashion_release \
 	--output_dir=out \
@@ -33,6 +37,6 @@ run-negative:
 	--initializer_token="style" \
 	--output_dir=./out
 test:
-	pipenv run python test_negative.py
+	python test_negative.py
 clean:
-	pipenv --rm
+	conda remove -n FashionR2R --all -y

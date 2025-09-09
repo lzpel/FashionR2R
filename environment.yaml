@@ -1,13 +1,17 @@
 name: FashionR2R
 channels:
   - pytorch
+  - nvidia # ← 追加 
+  - conda-forge # ← 追加 
   - defaults
 dependencies:
   - python=3.8.18
   - pip=20.3
   - pytorch=2.2.0
+  - pytorch-cuda=12.1 # ← 追加 
   - numpy=1.24.4
   - pip:
+    - huggingface_hub==0.20.2   # ← 追加　line 179 generator = torch.Generator(device="cuda").manual_seed(1) のため
     - diffusers==0.26.1
     - gradio
     - opencv-python==4.9.0.80
@@ -20,4 +24,4 @@ dependencies:
     - scikit-learn==1.3.2
     - -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
     - -e git+https://github.com/openai/CLIP.git@main#egg=clip
-    - -e .
+    # -e . 削除

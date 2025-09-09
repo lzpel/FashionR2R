@@ -173,7 +173,7 @@ def main():
 
                 register_attention_control_new(pipe, controller)
 
-                pipe.enable_model_cpu_offload()
+                # pipe.enable_model_cpu_offload()
                 # pipe.enable_xformers_memory_efficient_attention()
 
                 generator = torch.Generator(device="cuda").manual_seed(1)
